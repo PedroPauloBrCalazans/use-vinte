@@ -9,6 +9,7 @@ export default function CadastrarCliente() {
     const [ email, setEmail ] = useState('');
     const [ masculino, setMasculino ] = useState(false);
     const [ feminino, setFeminino ] = useState(false);
+    const [ ativo, setAtivo ] = useState(false);
 
     useEffect(() => {
         let elems = document.querySelectorAll('.modal');
@@ -19,7 +20,7 @@ export default function CadastrarCliente() {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         
-        const data = { nome, telefone, email, masculino, feminino };
+        const data = { nome, telefone, email, masculino, feminino, ativo };
 
         api.post(`clientes`, data)
         .then((res) => {
@@ -75,6 +76,7 @@ export default function CadastrarCliente() {
                                             className="validate"
                                             value={telefone}
                                             onChange={(event) => { setTelefone(event.target.value); }}
+                                            maxLength='11'
                                         />
                                     </div>
                                 </div>
@@ -92,6 +94,18 @@ export default function CadastrarCliente() {
                                         />
                                     </div>
                                 </div>
+                                <p>Ativo:</p>
+                                <p>
+                                    <label>
+                                        <input 
+                                            className="with-gap"
+                                            checked={ativo} 
+                                            onChange={(event) => { setAtivo(event.target.checked) }} 
+                                            name="ativo" type="radio"  
+                                        />
+                                        <span>Ativar</span>
+                                    </label>
+                                </p>
 
                                 <p>Gênero:</p>
                                 <p>

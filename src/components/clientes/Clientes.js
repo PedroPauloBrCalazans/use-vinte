@@ -17,10 +17,7 @@ export default function Clientes() {
           
           setAllClientes(allClientes.data);
       };
-
-       
       getClientes();
-
     }, []);
 
 
@@ -42,6 +39,7 @@ export default function Clientes() {
                     <th>Nome</th>
                     <th>Telefone</th>
                     <th>E-mail</th>
+                    <th>Situação</th>
                     <th>Ações</th>
                 </tr>
                 </thead>
@@ -54,16 +52,14 @@ export default function Clientes() {
                                     <td>{itens.nome}</td>
                                     <td>{itens.telefone.replace(/(\d{2})(\d{1})(\d{4})(\d{4})/, "$1 $2 $3-$4")}</td>
                                     <td>{itens.email}</td>
+                                    <td>{itens.ativo ? 'Ativo' : 'Inativo'}</td>
                                     <td>
-
-                                        <a className="waves-effect waves-light btn-small" title="Editar">
+                                        <button className="waves-effect waves-light btn-small" title="Editar">
                                             <i className="material-icons">edit</i>
-                                        </a>
+                                        </button>
 
                                        <DeleteCliente itens={itens} />
                                     </td>
-
-
                                     
                                 </tr>
                                

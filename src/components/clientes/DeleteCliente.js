@@ -1,21 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import  api from '../../api/ApiService';
-import M from 'materialize-css'; 
+import M from 'materialize-css';
+
+import { Modal, Button } from 'react-materialize';
+
 
 export default function DeleteCliente({ itens }) {
 
+    const [ open, setOpen ] = useState(false);
 
-    useEffect(() => {
-        let elems = document.querySelectorAll('.modal');
-        M.Modal.init(elems, {inDuration: 300, outDuration: 225});
-    }, []);
+    function fecharModal() {
+        setOpen(false);
+    }
+
+
 
     const deletarCliente = (id) => {
         let resp = api.delete(`/clientes/${id}`)
         resp.then((resp) => {
             if(resp.data.success) {
                 M.toast({ html: 'Cliente Excluído com Sucesso !', classes: 'green', displayLength: 2000 });
-
+                
                 setTimeout(() => {
                     window.location.href = '/todos-clientes'
                   }, 1000)
@@ -26,37 +31,35 @@ export default function DeleteCliente({ itens }) {
 
     return(
         <>
-             <a
-              className="waves-effect waves-light btn-small modal-trigger" 
-              href="#modal1" 
-              style={{marginLeft: '8px'}}    
-              title="Excluir">
-              <i className="material-icons">delete</i>
-            </a>
-
-                                           
-
-            <div id="modal1" className="modal">
-                <div className="modal-content">
-                    <h4>Excluir</h4>
-                    <p>Tem certeza que deseja excluir o Cliente <b style={{textTransform: "uppercase", color: "red"}}>{itens.nome}</b> ?</p>
-                </div> 
-                                        
-                <div className="modal-footer">
-                    <a 
-                        className="modal-close waves-effect waves-green btn-flat" 
-                        onClick={ () => deletarCliente(itens.id)}
-                    >
-                        Sim
-                    </a>
-                    <a 
-                        href="/todos-clientes"
-                        className="modal-close waves-effect waves-green btn-flat"
-                    >
-                        Fechar
-                    </a>
-                </div> 
-            </div>
+            <Modal
+                actions={[
+                    <Button flat modal="close" node="button" waves="green">Close</Button>
+                ]}
+                bottomSheet={false}
+                fixedFooter={false}
+                header="Excluir"
+                id="Modal-10"
+                open={false}
+                options={{
+                    dismissible: true,
+                    endingTop: '10%',
+                    inDuration: 250,
+                    onCloseEnd: null,
+                    onCloseStart: null,
+                    onOpenEnd: null,
+                    onOpenStart: null,
+                    opacity: 0.5,
+                    outDuration: 250,
+                    preventScrolling: true,
+                    startingTop: '4%'
+                }}
+                trigger={<Button className="button">Excluir</Button>}
+            >
+                <p>
+                    Tem certeza que deseja excluir o Cliente <b style={{textTransform: "uppercase", color: "red"}}>{itens.nome}</b> ?
+                </p>
+                <Button className="button" onClick={() => deletarCliente(itens.id)}>Excluir</Button>
+            </Modal>
         </>
     )
 }
