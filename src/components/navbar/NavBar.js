@@ -12,11 +12,11 @@ export default function NavBar() {
 
     return (
         <div>
-            <ul id="dropdown1" className="dropdown-content">
+            {/* <ul id="dropdown1" className="dropdown-content">
                 <li><Link to="/lista-convidados" style={{ fontFamily: "Dancing Script", fontSize: "20px"}}>Lista de Convidados</Link></li> 
                 <li className="divider"></li>
                 <li><Link to="/lista-presentes-padrinhos" style={{ fontFamily: "Dancing Script", fontSize: "20px"}}>Presentes Padrinhos</Link></li>
-            </ul>
+            </ul> */}
             <nav>
                 <div className="nav-wrapper grey darken-4">
                     <Link to="/" className="brand-logo" style={{marginLeft: '25px', fontFamily: "Dancing Script", fontSize: "40px"}}>UseVint3</Link>
@@ -24,14 +24,14 @@ export default function NavBar() {
                         <li><Link to="/agenda" style={{ fontFamily: "Dancing Script", fontSize: "20px"}}>Agenda</Link></li> 
                         <li><Link to="/financeiro" style={{ fontFamily: "Dancing Script", fontSize: "20px"}}>Financeiro</Link></li>
                         <li><Link to="/todos-clientes" style={{ fontFamily: "Dancing Script", fontSize: "20px"}}>Clientes</Link></li> 
-                        <li>
+                        {/* <li>
                             <a  className="dropdown-trigger" 
                                 data-target="dropdown1"
                             >
                                 Aqui
                                 <i className="material-icons right">arrow_drop_down</i>
                             </a>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </nav>

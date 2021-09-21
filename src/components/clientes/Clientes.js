@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import  api from '../../api/ApiService';
-import M from 'materialize-css'; 
+import  api from '../../api/ApiService'; 
 import Loading from '../Loading';
 import CadastrarCliente from './CadastrarCliente';
 import DeleteCliente from './DeleteCliente';
@@ -54,11 +53,15 @@ export default function Clientes() {
                                     <td>{itens.email}</td>
                                     <td>{itens.ativo ? 'Ativo' : 'Inativo'}</td>
                                     <td>
-                                        <button className="waves-effect waves-light btn-small" title="Editar">
+                                        <button 
+                                            className="waves-effect waves-light btn-small" 
+                                            title="Editar" 
+                                            style={{marginRight: '5px'}}
+                                        >
                                             <i className="material-icons">edit</i>
                                         </button>
 
-                                       <DeleteCliente itens={itens} />
+                                       <DeleteCliente itens={itens}/>
                                     </td>
                                     
                                 </tr>

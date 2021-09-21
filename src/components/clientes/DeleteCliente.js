@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import  api from '../../api/ApiService';
 import M from 'materialize-css';
 
@@ -6,13 +6,6 @@ import { Modal, Button } from 'react-materialize';
 
 
 export default function DeleteCliente({ itens }) {
-
-    const [ open, setOpen ] = useState(false);
-
-    function fecharModal() {
-        setOpen(false);
-    }
-
 
 
     const deletarCliente = (id) => {
@@ -53,7 +46,9 @@ export default function DeleteCliente({ itens }) {
                     preventScrolling: true,
                     startingTop: '4%'
                 }}
-                trigger={<Button className="button">Excluir</Button>}
+                trigger={<Button className="waves-effect waves-light btn-small" title="Excluir">
+                            <i className="material-icons">delete</i>
+                        </Button>}
             >
                 <p>
                     Tem certeza que deseja excluir o Cliente <b style={{textTransform: "uppercase", color: "red"}}>{itens.nome}</b> ?
